@@ -4,8 +4,11 @@
 <!-- insert into student values sun 20 男 flp  -->
 <!-- insert into student values zhang 22 女 flp  -->
 <!-- insert into student values song 21 男 flp  -->
-<!-- insert into student values xu 23 女 flp  -->
-<!-- insert into student values zhao 22 男 flp  -->
+<!-- insert into student values xu 18 女 flp  -->
+<!-- update student -->
+<!-- drop table student -->
+<!-- delete * from student -->
+<!-- delete from student where age = 18 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="index.js"></script>
     <script src="jquery-3.1.1.js"></script>
+    <script src="index.js"></script>
     <style>
         div,input,p,body{
             margin: 0;
@@ -45,7 +48,10 @@
     
       <div id="sq">
           <input type="text" id="test" >
-         <button type="button" onclick="init()">执行</button> 
+         <button type="button" onclick="init()">执行</button>  
+         <button onclick="qcreate()">快速creat</button>
+         <button onclick="qinsert()">快速insert</button>
+         <!-- <button onclick="Update()">更新</button> -->
           <div id="sql"  >
           <!--  <table   id="s"border="1">
                  <tr id =  tb[0]+'head'>
@@ -84,6 +90,11 @@
                     <td>第四行第五列</td>
                 </tr> 
         </table>-->
+        <!-- <ul>
+            <li>jQuery判断当前元素是第几个元素示例</li>
+            <li>jQuery获取第N个元素示例</li>
+            <li>jQuery选择器示例</li>
+        </ul> -->
           </div>
     </div>
 
@@ -104,7 +115,7 @@
     // （2）以文件形式保存基本表。（存储结构可自行设计）
     // （3）建立相应的数据字典。
     // 2、实现输入数据库记录的功能（insert）。
-    //  INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+    //  
     // 3、实现删除数据库记录的功能（delete）。
     // 
     // 4、实现修改数据库记录的功能（update）。
@@ -116,11 +127,18 @@
     // 9、实现建立视图的功能，并保存在数据字典中。选作
     // 10、实现删除视图的功能。 选作
 
-    var str="HelloWorld!" 
-console.log(str.indexOf("Hello"))//输出0 
-console.log(str.indexOf("World"))//输出6 
-console.log(str.indexOf("world"))//输出-1，因为没查到 
+//     $("ul li").click(function () {
+//     var index = $("ul li").index(this);
+//     console.log(this);
+//     alert(index);
+//  });
+
+
+
 
 </script>
 </body>
 </html>
+
+
+
