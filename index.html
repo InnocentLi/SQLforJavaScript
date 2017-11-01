@@ -5,10 +5,13 @@
 <!-- insert into student values zhang 22 女 flp  -->
 <!-- insert into student values song 21 男 flp  -->
 <!-- insert into student values xu 18 女 flp  -->
-<!-- update student -->
+<!-- update student 需要鼠标点击 -->
 <!-- drop table student -->
 <!-- delete * from student -->
 <!-- delete from student where age = 18 -->
+<!-- alter table student add subject  -->
+<!-- select * from student -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +28,7 @@
             list-style: none;
          }
          input{
+             width: 300px;
              border: 1px solid black;
          }
          #sq{
@@ -52,86 +56,15 @@
          <button onclick="qcreate()">快速creat</button>
          <button onclick="qinsert()">快速insert</button>
          <!-- <button onclick="Update()">更新</button> -->
-          <div id="sql"  >
-          <!--  <table   id="s"border="1">
-                 <tr id =  tb[0]+'head'>
-                    <th style="width: 160px;">表头一</th>
-                    <th style="width: 160px;">表头二 </th>
-                    <th style="width: 160px;">表头三</th>
-                    <th style="width: 160px;">表头四</th>
-                    <th style="width: 160px;">表头五</th>
-                </tr>
-                <tr>
-                    <td>第一行第一列</td>
-                    <td>第一行第二列</td>
-                    <td>第一行第三列</td>
-                    <td>第一行第四列</td>
-                    <td>第一行第五列</td>
-                </tr>
-                <tr>
-                    <td>第二行第一列</td>
-                    <td>第二行第二列</td>
-                    <td>第二行第三列</td>
-                    <td>第二行第四列</td>
-                    <td>第二行第五列</td>
-                </tr>
-                <tr>
-                    <td>第三行第一列</td>
-                    <td>第三行第二列</td>
-                    <td>第三行第三列</td>
-                    <td>第三行第四列</td>
-                    <td>第三行第五列</td>
-                </tr>
-                <tr>
-                    <td>第四行第一列</td>
-                    <td>第四行第二列</td>
-                    <td>第四行第三列</td>
-                    <td>第四行第四列</td>
-                    <td>第四行第五列</td>
-                </tr> 
-        </table>-->
-        <!-- <ul>
-            <li>jQuery判断当前元素是第几个元素示例</li>
-            <li>jQuery获取第N个元素示例</li>
-            <li>jQuery选择器示例</li>
-        </ul> -->
+          <div id="sql">
+    
           </div>
     </div>
 
       <div id="record"></div>
       
 <script>
-    //     实验三  创建数据库及数据操作功能
-    // （一）实验目的
-    // 1、熟悉关系数据库建库语句和数据操作语句的功能。
-    // 2、熟悉关系数据库中关系模式维护语句的功能。
-    // 3、掌握用高级程序设计语言创建数据库的方法。
-    // 4、掌握数据操作功能的实现方法。
-    // 5、掌握修改关系模式的方法。
-    // （二）实验内容与步骤：
-    // 以下命令实现的功能参照实验二中对语句的要求
-    // 1、实现建立数据库表结构的功能（create table）。要求：
-    // （1）支持整型、字符型数据。
-    // （2）以文件形式保存基本表。（存储结构可自行设计）
-    // （3）建立相应的数据字典。
-    // 2、实现输入数据库记录的功能（insert）。
-    //  
-    // 3、实现删除数据库记录的功能（delete）。
-    // 
-    // 4、实现修改数据库记录的功能（update）。
-    // 5、实现显示数据库结构和内容（以表格形式显示）（select * from 关系名）。
-    // 6、实现在已有的关系中添加属性的功能（alter table……add）；
-    // 7、实现从已有的关系中删除属性的功能（alter table……drop）；
-    // 6和7要求不论关系表中是否有数据，都能正确执行命令，并修改相应的数据字典。
-    // 8、实现删除表的功能（drop table）。
-    // 9、实现建立视图的功能，并保存在数据字典中。选作
-    // 10、实现删除视图的功能。 选作
 
-//     $("ul li").click(function () {
-//     var index = $("ul li").index(this);
-//     console.log(this);
-//     alert(index);
-//  });
 
 
 
