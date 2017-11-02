@@ -36,7 +36,7 @@ function init() {
     } else if (str.match("alter")) {
         Alter(str);
     } else if (str.match("write")){
-        Write();
+        Write(str);
     }
 
     $('#test').val(null);
@@ -163,9 +163,9 @@ function Drop(str) {
 }
 
 function ShowRecord(str) {
-    
     $('#record').append('<p>' + str + new Date() + '</p>');
 }
+
 function OperationalDatabases() {
     //  $('#record').append('<p>'+str+new Date()+'</p>');
 }
@@ -192,9 +192,12 @@ function TableToJson(tableid) {
 }
 
 
-function Write(){
+function Write(str){
+    var tb7 = new Array();
+    tb7 = str.split(" ");
     var fso=new ActiveXObject("Scripting.FileSystemObject");      
     var f=fso.createtextfile("D:\a.txt",2,true); 
-    f.writeLine("wo shi di yi hang"); 
+    f.writeLine(TableToJson(tb7[1])); 
     f.close(); 
 }
+
