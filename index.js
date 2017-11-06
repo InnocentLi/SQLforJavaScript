@@ -1,3 +1,4 @@
+//文件写入只支持ie
 var TableName;
 var num = 0;
 function qcreate() {
