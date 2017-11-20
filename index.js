@@ -84,29 +84,11 @@ function Delete(str) {
     }
     else if (tb3[1] == "from") {
 
-        // console.log("tb3");
-        // console.log(tb3);
-        // console.log($("#"+tb3[2]+" tr"));
-        // console.log($("#"+tb3[2]+" tr td"));
-
-        //  while($("#"+tb3[2]+" tr td").val()==tb3[6]){
-        //      console,log(this);
-        //     aim = this;          
-        //   console.log(aim.index());
-        //  } 
-        // $("div")
         var a;
         a = $("#" + tb3[2] + " tr th:contains('" + tb3[4] + "')").index();
-        // console.log($("#"+tb3[2]+" tr th"))
         console.log(a);
         a = a + 1;
-        // console.log($("#"+tb3[2]+" tr th:contains('sex')"));
-        //$("#table3 tr:gt(0):eq(1)").hide();
-        // $("#table3 tr td:nth-child(2)")
-        // $("#"+tb3[2]+" tr td:nth-child(2)").hide();
-        //  console.log($("#"+tb3[2]+" tr td:nth-child("+a+")"));
         console.log(a);
-        //  $("#"+tb3[2]+" tr td:nth-child("+a+")")
         var aim = $("#" + tb3[2] + " tr td:contains('" + tb3[6] + "')");
         console.log(aim);
         aim.parent().hide();
@@ -130,10 +112,15 @@ function Select(str) {
     var tb = new Array();
     tb = str.split(" ");
     if(tb[1]=="*"){
-        console.log(tb[1]);
-        $('#'+tb[3]).animate({width:"230px"})
+        console.log($('#' + tb[3]).find("tr"));
+        jQuery('#' + tb[3]).animate({ backgroundColor: '#FF0000' }, 1000).animate({ backgroundColor: '#FFFFFF' }, 1000)
+        //.css('background-color', 'red');
+       
         //.animate({background:"white"})
         //.animate({height:"300px"});
+    }
+    else {
+        
     }
 }
 
