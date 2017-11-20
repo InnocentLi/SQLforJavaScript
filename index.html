@@ -1,16 +1,20 @@
-<!-- create table student name age sex teacher -->
-<!-- insert into student values wang 18 男 flp  -->
-<!-- insert into student values li 19 女 flp  -->
-<!-- insert into student values sun 20 男 flp  -->
-<!-- insert into student values zhang 22 女 flp  -->
-<!-- insert into student values song 21 男 flp  -->
-<!-- insert into student values xu 18 女 flp  -->
+<!-- create table student name age sex Math sql Cplusplus teacher -->
+<!-- insert into student values wang 18 男 56 89 78 flp  -->
+<!-- insert into student values li 19 女 77 76 81 flp  -->
+<!-- insert into student values sun 20 男 52 57 60 flp  -->
+<!-- insert into student values zhang 22 女 93 64 75 flp  -->
+<!-- insert into student values song 21 男 68 45 74 flp  -->
+<!-- insert into student values zhu 18 女 53 67 72 flp  -->
 <!-- update student 需要鼠标点击 -->
 <!-- drop table student -->
 <!-- delete * from student -->
 <!-- delete from student where age = 18 -->
 <!-- alter table student add subject  -->
 <!-- select * from student -->
+     select age from student
+     select * from student where age = 18
+     select * from student where math < 60
+     select 
 <!-- write -->
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +24,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="jquery-3.1.1.js"></script>
+    <script src="jquery.color.js"></script>
     <script src="index.js"></script>
+    <script src="wsinit.js"></script>
     <style>
         div,input,p,body{
             margin: 0;
@@ -53,6 +59,9 @@
       <div id="sq">
           <input type="text" id="test" >
           <button type="button" onclick="init()">执行</button>  
+        <button type="button" onclick="qcreate()">create</button>
+        <button type="button" onclick="qinsert()">insert</button>
+        <button type="button" id="sendBtn">传输流</button>
           <div id="sql">   
           </div>
     </div>
