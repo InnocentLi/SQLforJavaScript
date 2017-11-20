@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>服务器</h1>
+
+    <script>
+        var ws = new WebSocket("ws://192.168.0.141:3000/");
+        function showMessage(str, type) {
+            var div = document.createElement('div');
+            div.innerHTML = str;
+            if (type == "enter") {
+                div.style.color = "blue";
+            } else if (type == "leave") {
+                div.style.color = "red";
+            }
+            document.body.appendChild(div);
+        }
+        ws.onopen = function () {
+            console.log("websocket open");
+        }
+        ws.onclose = function () {
+            console.log("websocket close");
+        }
+        ws.onmessage = function (e) {
+            console.log(e.data);
+            var mes = JSON.parse(e.data);
+            showMessage(mes.data, mes.type);
+        }
+    </script>
+</body>
+
+
+</html>
