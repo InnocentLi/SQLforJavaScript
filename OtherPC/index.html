@@ -1,3 +1,8 @@
+<!-- select * from student -->
+<!-- select age from student -->
+<!-- select * from student where age = 18 -->
+<!-- select * from student where math < 60 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,33 +11,272 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        button {
+            width: 60px;
+            height: 30px;
+        }
+    </style>
+    <script src="jquery-3.1.1.js"></script>
+    <script src="jquery.color.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
 <body>
     <h1>服务器</h1>
-
+    <input type="text" id="test">
+    <button onclick="find()">执行</button>
+    <button onclick="math()">math</button>
+    <button onclick="sql()">sql</button>
+    <button onclick="Cplusplus()">C++</button>
+    <table id="student" border="1">
+        <tbody>
+            <tr id="studenthead">
+                <th style="width: 60px;">name</th>
+                <th style="width: 60px;">age</th>
+                <th style="width: 60px;">sex</th>
+                <th style="width: 60px;">Math</th>
+                <th style="width: 60px;">sql</th>
+                <th style="width: 60px;">Cplusplus</th>
+                <th style="width: 60px;">teacher</th>
+            </tr>
+            <tr class="studentline0">
+                <td>wang</td>
+                <td>18</td>
+                <td>男</td>
+                <td>56</td>
+                <td>89</td>
+                <td>78</td>
+                <td>flp</td>
+            </tr>
+            <tr class="studentline1">
+                <td>li</td>
+                <td>19</td>
+                <td>女</td>
+                <td>77</td>
+                <td>76</td>
+                <td>81</td>
+                <td>flp</td>
+            </tr>
+            <tr class="studentline2">
+                <td>sun</td>
+                <td>20</td>
+                <td>男</td>
+                <td>52</td>
+                <td>57</td>
+                <td>60</td>
+                <td>flp</td>
+            </tr>
+            <tr class="studentline3">
+                <td>zhang</td>
+                <td>22</td>
+                <td>女</td>
+                <td>93</td>
+                <td>64</td>
+                <td>75</td>
+                <td>flp</td>
+            </tr>
+            <tr class="studentline4">
+                <td>song</td>
+                <td>21</td>
+                <td>男</td>
+                <td>68</td>
+                <td>45</td>
+                <td>74</td>
+                <td>flp</td>
+            </tr>
+            <tr class="studentline5">
+                <td>zhu</td>
+                <td>18</td>
+                <td>女</td>
+                <td>53</td>
+                <td>67</td>
+                <td>72</td>
+                <td>flp</td>
+            </tr>
+        </tbody>
+    </table>
     <script>
-        var ws = new WebSocket("ws://192.168.0.141:3000/");
-        function showMessage(str, type) {
-            var div = document.createElement('div');
-            div.innerHTML = str;
-            if (type == "enter") {
-                div.style.color = "blue";
-            } else if (type == "leave") {
-                div.style.color = "red";
+        try {
+            var ws = new WebSocket("ws://192.168.0.141:3000/");
+
+            function showMessage(str, type) {
+                var div = document.createElement('div');
+                div.innerHTML = str;
+                if (type == "enter") {
+                    div.style.color = "blue";
+                } else if (type == "leave") {
+                    div.style.color = "red";
+                }
+                document.body.appendChild(div);
             }
-            document.body.appendChild(div);
+            ws.onopen = function () {
+                console.log("websocket open");
+            }
+            ws.onclose = function () {
+                console.log("websocket close");
+            }
+            ws.onmessage = function (e) {
+                console.log(e.data);
+                var mes = JSON.parse(e.data);
+                showMessage(mes.data, mes.type);
+            }
+        } catch (e) {
+            console.log(e);
         }
-        ws.onopen = function () {
-            console.log("websocket open");
+
+        var str = $("#test").val();
+        var tb = new Array();
+        tb = str.split(" ");
+        //         select * from student
+        //         select age from student
+        //         select sex from student
+        //         select * from student where age = 18 
+        //         select * from student where math = 68
+        function find() {
+            if (tb[1] == "*" && tb.length == 4) {
+                console.log($('#' + tb[3]).find("tr"));
+                jQuery('#' + tb[3]).animate({
+                    backgroundColor: '#FF0000'
+                }, 1000).animate({
+                    backgroundColor: '#FF0000'
+                }, 1000).animate({
+                    backgroundColor: '#FFFFFF'
+                }, 1000)
+                //.css('background-color', 'red');
+                //.animate({background:"white"})
+                //.animate({height:"300px"});
+            } else if (tb[4] == "where" && tb[6] == "=") {
+                console.log("WHERE");
+                $("#" + tb[3] + " tr td:contains('" + tb[7] + "')").parent().animate({
+                    backgroundColor: '#FF0000'
+                }, 1000).animate({
+                    backgroundColor: '#FF0000'
+                }, 1000).animate({
+                    backgroundColor: '#FFFFFF'
+                }, 1000)
+            } else if (tb[4] == "where" && tb[6] == "<") {
+                console.log("WHERE");
+
+            }
+
         }
-        ws.onclose = function () {
-            console.log("websocket close");
+
+        function doa(dataset, color) {
+
+            var width = 600;
+            var height = 600;
+
+            //数组的数量
+
+            var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            var xAxisScale = d3.scale.ordinal()
+                .domain(d3.range(dataset.length))
+                .rangeRoundBands([0, 500]);
+
+            var yAxisScale = d3.scale.linear()
+                .domain([0, d3.max(dataset)])
+                .range([500, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(xAxisScale)
+                .orient("bottom");
+
+            var yAxis = d3.svg.axis()
+                .scale(yAxisScale)
+                .orient("left");
+
+            var xScale = d3.scale.ordinal()
+                .domain(d3.range(dataset.length))
+                .rangeRoundBands([0, 500], 0.05);
+
+            var yScale = d3.scale.linear()
+                .domain([0, d3.max(dataset)])
+                .range([0, 500]);
+
+            svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("y", function (d, i) {
+                    return 50 + 500;
+                })
+                .attr("height", 0)
+                .attr("fill", "red")
+                .transition()
+                .duration(3000)
+                .delay(function (d, i) {
+                    return 200 * i;
+                })
+                .attr("x", function (d, i) {
+                    return 30 + xScale(i);
+                })
+                .attr("y", function (d, i) {
+                    return 50 + 500 - yScale(d);
+                })
+                .attr("width", function (d, i) {
+                    return xScale.rangeBand();
+                })
+                .attr("height", yScale)
+                .attr("fill", "steelblue");
+
+            svg.selectAll("text")
+                .data(dataset)
+                .enter().append("text")
+                .attr("x", function (d, i) {
+                    return 30 + xScale(i);
+                })
+                .attr("y", function (d, i) {
+                    return 50 + 500 - yScale(d);
+                })
+                .attr("dx", function (d, i) {
+                    return xScale.rangeBand() / 3;
+                })
+                .attr("dy", 15)
+                .attr("text-anchor", "begin")
+                .attr("font-size", 14)
+                .attr("fill", "white")
+                .text(function (d, i) {
+                    return d;
+                });
+
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(30,550)")
+                .call(xAxis);
+
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(30,50)")
+                .call(yAxis);
         }
-        ws.onmessage = function (e) {
-            console.log(e.data);
-            var mes = JSON.parse(e.data);
-            showMessage(mes.data, mes.type);
+
+        // wang 	18 	男 	56 	89 	78 	flp
+        // li 	    19 	女 	77 	76 	81 	flp
+        // sun 	    20 	男 	52 	57 	60 	flp
+        // zhang 	22 	女 	93 	64 	75 	flp
+        // song 	21 	男 	68 	45 	74 	flp
+        // zhu   	18 	女 	53 	67 	72 	flp
+        //  dataset2 = [89, 76, 57, 64, 45, 67];
+        function math() {
+            var dataset = [56, 77, 52, 93, 68, 53];
+            var color = "red";
+            doa(dataset, color);
+        }
+
+        function sql() {
+            var dataset = [89, 76, 57, 64, 45, 67];
+            var color = "blue";
+            doa(dataset, color);
+        }
+
+        function Cplusplus() {
+            var dataset = [78, 81, 60, 75, 74, 72];
+            var color = "yellow";
+            doa(dataset, color);
         }
     </script>
 </body>
