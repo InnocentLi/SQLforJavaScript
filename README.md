@@ -31,3 +31,5 @@ A js demo to make
 ## ps 竟然有DataTables Table plug-in for jQuery这个东西，比我的这个好用1000倍啊(气哭)
 
 ## 12月2日更新 加了一个写死的D3统计，select真是不想写了(烦死了)
+
+立个志向也是未来的毕业设计，写一个基于node的纯js数据库并最好能跨域访问。能用之前类似asp.net的项目通过js写好的数据库进行js dom层渲染
