@@ -36,3 +36,5 @@ A js demo to make
 立个志向也是未来的毕业设计，写一个基于node的纯js数据库并最好能跨域访问。能用之前类似asp.net的项目通过js写好的数据库进行js dom层渲染    
 准备加B+树的排列/加锁死/加主键(其实有主键但是是ID值)/加分布式(利用websoket，思路，将一部分dom元素通过websoket传入客户端进行select)    
 最近买了本数据库实现，等我啃吧
+
+## asm.js!!!
