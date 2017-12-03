@@ -29,3 +29,5 @@ A js demo to make
  打开第二个文件夹下的文件 ，更改ws:后面的ip地址为主服务器的地址，成功后保存双击打开即可
  
 ## ps 竟然有DataTables Table plug-in for jQuery这个东西，比我的这个好用1000倍啊(气哭)
+
+## 12月2日更新 加了一个写死的D3统计，select真是不想写了(烦死了)
